@@ -103,8 +103,8 @@ public class ControllerBinding<T extends BindingState> {
     public static final ControllerBinding<BindingState.Button> RIGHT_STICK_BUTTON = registerWithDefaults(createButton("right_stick_button", Button.RIGHT_STICK), o -> List.of(o.keyShift));
     public static final ControllerBinding<BindingState.Button> LEFT_BUMPER = registerWithDefaults(createButton("left_bumper", Button.LEFT_BUMPER), o -> List.of(Legacy4JClient.keyCycleHeldLeft));
     public static final ControllerBinding<BindingState.Button> RIGHT_BUMPER = registerWithDefaults(createButton("right_bumper", Button.RIGHT_BUMPER), o -> List.of(Legacy4JClient.keyCycleHeldRight));
-    public static final ControllerBinding<BindingState.Axis> LEFT_TRIGGER = registerWithDefaults(new ControllerBinding<>("left_trigger", c-> BindingState.Axis.createTrigger(c, ()->LegacyOptions.leftTriggerDeadZone.get().floatValue(), true)), o-> List.of(o.keyUse));
-    public static final ControllerBinding<BindingState.Axis> RIGHT_TRIGGER = registerWithDefaults(new ControllerBinding<>("right_trigger", c-> BindingState.Axis.createTrigger(c, ()->LegacyOptions.rightTriggerDeadZone.get().floatValue(), false)), o-> List.of(o.keyAttack));
+    public static final ControllerBinding<BindingState.Axis> LEFT_TRIGGER = registerWithDefaults(createButton("left_trigger", Button.LEFT_TRIGGER), o-> List.of(o.keyUse));
+    public static final ControllerBinding<BindingState.Axis> RIGHT_TRIGGER = registerWithDefaults(createButton("right_trigger", Button.RIGHT_TRIGGER), o-> List.of(o.keyAttack));
     public static final ControllerBinding<BindingState.Button> DPAD_UP = registerWithDefaults(createButton("dpad_up", Button.DPAD_UP), o -> List.of(Legacy4JClient.keyFlyUp));
     public static final ControllerBinding<BindingState.Button> DPAD_DOWN = registerWithDefaults(createButton("dpad_down", Button.DPAD_DOWN), o -> List.of(Legacy4JClient.keyFlyDown));
     public static final ControllerBinding<BindingState.Button> DPAD_LEFT = registerWithDefaults(createButton("dpad_left", Button.DPAD_LEFT), o -> List.of(Legacy4JClient.keyFlyLeft));
@@ -135,7 +135,7 @@ public class ControllerBinding<T extends BindingState> {
     }
 
     public enum Button {
-        DOWN(DOWN_BUTTON),RIGHT(RIGHT_BUTTON),LEFT(LEFT_BUTTON),UP(UP_BUTTON),BACK(ControllerBinding.BACK),GUIDE(ControllerBinding.GUIDE),START(ControllerBinding.START),LEFT_STICK(LEFT_STICK_BUTTON),RIGHT_STICK(RIGHT_STICK_BUTTON),LEFT_BUMPER(ControllerBinding.LEFT_BUMPER),RIGHT_BUMPER(ControllerBinding.RIGHT_BUMPER),DPAD_UP(ControllerBinding.DPAD_UP),DPAD_DOWN(ControllerBinding.DPAD_DOWN),DPAD_LEFT(ControllerBinding.DPAD_LEFT),DPAD_RIGHT(ControllerBinding.DPAD_RIGHT),TOUCHPAD(TOUCHPAD_BUTTON),CAPTURE(ControllerBinding.CAPTURE),LSL(LSL_BUTTON),LSR(LSR_BUTTON),RSL(RSL_BUTTON),RSR(RSR_BUTTON);
+        DOWN(DOWN_BUTTON),RIGHT(RIGHT_BUTTON),LEFT(LEFT_BUTTON),UP(UP_BUTTON),BACK(ControllerBinding.BACK),GUIDE(ControllerBinding.GUIDE),START(ControllerBinding.START),LEFT_STICK(LEFT_STICK_BUTTON),RIGHT_STICK(RIGHT_STICK_BUTTON),LEFT_BUMPER(ControllerBinding.LEFT_BUMPER),RIGHT_BUMPER(ControllerBinding.RIGHT_BUMPER),DPAD_UP(ControllerBinding.DPAD_UP),DPAD_DOWN(ControllerBinding.DPAD_DOWN),DPAD_LEFT(ControllerBinding.DPAD_LEFT),DPAD_RIGHT(ControllerBinding.DPAD_RIGHT),TOUCHPAD(TOUCHPAD_BUTTON),CAPTURE(ControllerBinding.CAPTURE),LEFT_TRIGGER(ControllerBinding.LEFT_TRIGGER),RIGHT_TRIGGER(ControllerBinding.RIGHT_TRIGGER),LSL(LSL_BUTTON),LSR(LSR_BUTTON),RSL(RSL_BUTTON),RSR(RSR_BUTTON);
         public final ControllerBinding<BindingState.Button> binding;
 
         Button(ControllerBinding<BindingState.Button> binding){
@@ -144,7 +144,7 @@ public class ControllerBinding<T extends BindingState> {
     }
 
     public enum Axis {
-        LEFT_STICK_X,LEFT_STICK_Y,RIGHT_STICK_X,RIGHT_STICK_Y,LEFT_TRIGGER,RIGHT_TRIGGER
+        LEFT_STICK_X,LEFT_STICK_Y,RIGHT_STICK_X,RIGHT_STICK_Y
     }
 
 }
